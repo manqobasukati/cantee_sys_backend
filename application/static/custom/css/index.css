@@ -1,0 +1,31 @@
+.nav-bar-component ul{
+	text-align: right;
+	
+}
+.nav-bar-component li{
+	margin-left:8px;
+}
+
+.home-page div:first-of-type{
+	height:100px;
+}
+
+.home-page div.row.title{
+	height:65px;
+}
+
+.surname-page div.card{
+	margin-top:20px;
+}
+
+.surname-page span.card-title{
+	color:#007bff;
+}
+
+
+.surname-display li{
+	 list-style-type: none;
+}
+
+
+

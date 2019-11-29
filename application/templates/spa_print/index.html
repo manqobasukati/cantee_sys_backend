@@ -1,0 +1,43 @@
+
+<html>
+	<head>
+		<title>Generic</title>
+		<link rel="stylesheet" href="{{url_for('static',filename='libraries/css/bootstrap.css')}}" >
+		<!--css custom here-->
+		<link rel="stylesheet" href="{{url_for('static',filename='custom/css/index.css')}}" >
+		<script src="{{url_for('static',filename='libraries/js/vue.js')}}"></script>
+		<script src="{{url_for('static',filename='libraries/js/vuex.js')}}"></script>
+		<script src="{{url_for('static',filename='libraries/js/vue-router.js')}}"></script>
+		<script src="{{url_for('static',filename='libraries/js/jquery.js')}}"></script>
+		<script src="{{url_for('static',filename='libraries/js/bootstrap.js')}}"></script>
+	</head>
+	<body>
+		<div id="app">
+		  <main-page />
+		</div>
+	</body>
+	{% include "spa_print/navbar_component.html" %}
+	{% include "spa_print/view_results.html" %}
+	{% include "spa_print/surname_display.html" %}
+	{% include "spa_print/main_page.html" %}
+	{% include "spa_print/home_page.html" %}
+	{% include "spa_print/surname_page.html" %}
+	{% include "spa_print/stats_page.html" %}
+	{% include "spa_print/about_page.html" %}
+	<script src="{{url_for('static',filename='custom/js/server_handler.js')}}"></script>
+	<script src="{{url_for('static',filename='custom/js/store.js')}}"></script>
+	<script src="{{url_for('static',filename='custom/js/routes.js')}}"></script>
+	<script type="text/javascript">
+	  new Vue({
+			el:"#app",
+			components:{
+				'main-page':MainPage,
+			},
+			router:router,
+			store:store,
+			//router:router,
+			delimiters: ["${", "}"]
+		});
+	</script>
+	
+</html>
