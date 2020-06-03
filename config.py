@@ -19,7 +19,7 @@ class DevelopmentConfig(Config):
 	APPLICATION_DIR = os.path.dirname(os.path.realpath(__file__))
 	DEBUG = True
 	SECRET_KEY = 'this is my secret key'
-	SQLALCHEMY_DATABASE_URI = 'sqlite:///%s/post_it.db' % APPLICATION_DIR
+	SQLALCHEMY_DATABASE_URI = 'sqlite:///%s/canteen_sys.db' % APPLICATION_DIR
 	UPLOAD_FOLDER = os.getcwd()+'/application/static/images'
 	#SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:''@localhost:3306/announcement_hub'
 	
