@@ -9,15 +9,14 @@ from werkzeug.utils import secure_filename
 from inspect import currentframe
 import os
 
+
+
 @api_print.route('/create-post', methods=['POST'])
 @token_required
 def create_post_view(current_user):
 	content =  request.form
 	files = request.files
 	if request.method == 'POST':
-		#content = request.get_json(force=True)
-		here = "Here  "
-		print(here, content)
 		post_days = content['post_days']
 		post = Post(post_no_of_days=post_days)
 		fi = files['post_picture']
@@ -37,7 +36,8 @@ def create_post_view(current_user):
 				post_event.user_id = int(i)
 				post_event.post_id = post.post_id
 				post_event.accepted = False
-				print(post_event)
+				post_event.start_time = content['post_start_time']
+				post_event.stop_time = content['post_end_time']
 				db.session.add(post_event)
 				db.session.commit()
 		return jsonify({'message':'created post'})	

@@ -8,7 +8,9 @@ class PostView(ModelView):
 
 class PostEventView(ModelView):
     list_columns = ['post_id','id','accepted','post_verified',
-                    'post_verification_pic','user_id','user.user_name']
+                    'post_verification_pic','user_id','user.user_name','start_time','stop_time','date']
+
+
 
 UserAdmin = admin.add_view(ModelView(User, db.session))
 PostAdmin = admin.add_view(PostView(Post, db.session))

@@ -38,7 +38,7 @@ class Post(db.Model):
 	post_id = db.Column(db.Integer, primary_key=True)
 	post_area = db.Column(db.String(100))
 	post_user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-	user = db.relationship('User', backref='user', uselist=False)
+	user = db.relationship('User', backref='person_making_post', uselist=False)
 	post_no_of_days = db.Column(db.Integer)
 	post_picture = db.Column(db.String(100))
 	post_message = db.Column(db.String(100))
@@ -53,8 +53,27 @@ class PostEvent(db.Model):
 	post_id = db.Column(db.Integer, db.ForeignKey('posts.post_id'))
 	post = db.relationship('Post', backref='post', uselist=False)
 	accepted = db.Column(db.Boolean)
-	post_verified = db.Column(db.Boolean)
-	post_verification_pic = db.Column(db.String(100))
+	start_time = db.Column(db.Integer)
+	stop_time = db.Column(db.Integer)
+	date = db.Column(db.String(100))
+	
+
+	def calculateDuration(self):
+		duration = self.stop_time - self.start_time
+		return duration
+
+
+class PostVerificationPictures(db.Model):
+	__tablename__ = 'post_verification_pictures'
+	id = db.Column(db.Integer, primary_key=True)
+	post_event_id = db.Column(db.Integer, db.ForeignKey('post_events.id'))
+	post_event = db.relationship('PostEvent',backref='post_event',uselist=False)
+	post_is_ver_1 = db.Column(db.Boolean)
+	post_is_ver_2 = db.Column(db.Boolean)
+	post_verif_pic_1 = db.Column(db.String(100))
+	post_verif_pic_2 = db.Column(db.String(100))
+	
+
 
 
 

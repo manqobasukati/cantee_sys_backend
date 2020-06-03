@@ -8,6 +8,9 @@ from werkzeug.utils import secure_filename
 import os
 
 
+from application.api.utility_functions import return_as_dict
+
+
 
 @api_print.route('/post', methods=['GET','PUT'])
 @token_required
@@ -18,11 +21,7 @@ def get_posts(current_user):
 	posts = []	
 	if request.method == 'GET':
 		for i in p:
-			post = {}
-			post['post_event_id'] = i.id
-			post['post_picture'] = i.post.post_picture
-			post['post_message'] = i.post.post_message
-			post['post_accepted'] = i.accepted
+			post = return_as_dict(i)
 			posts.append(post)
 	elif request.method == 'PUT':
 		response = request.form
